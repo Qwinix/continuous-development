@@ -1,1 +1,1 @@
-docker build -t ujwalpatel:2.0 .
+docker build -t stage3 -f docker/Dockerfile .
