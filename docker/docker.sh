@@ -1,1 +1,1 @@
-docker build -t stage1 .
+docker build -t ujwalpatel:2.0 .

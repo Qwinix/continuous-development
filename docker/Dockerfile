@@ -1,2 +1,2 @@
 FROM ubuntu:18.04
-RUN echo 'ujwala'
+RUN apt-get update
