@@ -1,0 +1,1 @@
+docker build -t stage3 -f docker/Dockerfile .
