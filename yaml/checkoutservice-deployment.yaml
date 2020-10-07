@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,18 +6,17 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: checkoutservice
+    app: checkoutservice
   template:
     metadata:
       labels:
-        app:  checkoutservice
+        app: checkoutservice
     spec:
       containers:
-        - name: server
-          image: 
-            - gcr.io/google-samples/microservices-demo/checkoutservice:v0.2.0
-          ports:
-          - containerPort: 5050
+        name: server
+        image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.2.0
+        ports:
+          containerPort: 5050
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
@@ -24,20 +24,20 @@ spec:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
           env:
-          - name: PORT
-            value: "5050"
-          - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3550"
-          - name: SHIPPING_SERVICE_ADDR
-            value: "shippingservice:50051"
-          - name: PAYMENT_SERVICE_ADDR
-            value: "paymentservice:50051"
-          - name: EMAIL_SERVICE_ADDR
-            value: "emailservice:5000"
-          - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
-          - name: CART_SERVICE_ADDR
-            value: "cartservice:7070"
+            - name: PORT
+              value: "5050"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: "productcatalogservice:3550"
+            - name: SHIPPING_SERVICE_ADDR
+              value: "shippingservice:50051"
+            - name: PAYMENT_SERVICE_ADDR
+              value: "paymentservice:50051"
+            - name: EMAIL_SERVICE_ADDR
+              value: "emailservice:5000"
+            - name: CURRENCY_SERVICE_ADDR
+              value: "currencyservice:7000"
+            - name: CART_SERVICE_ADDR
+              value: "cartservice:7070"
           # - name: DISABLE_STATS
           #   value: "1"
           # - name: DISABLE_TRACING
